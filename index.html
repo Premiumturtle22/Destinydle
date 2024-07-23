@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinydle</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        <div id="helpOverlay" class="overlay">
+
+            <div class="overlay-content">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+
+                <h1>How To Play</h1>
+                <p>
+                    Type a name of any enemy type in Destiny, and once you submit, 
+                    you will see the attributes of the enemy displayed. Each attribute
+                    will have a colour associated with it, indicating how close your guess is to the answer:
+                    <br><span class="greenText bold">Green:</span> The attribute is an <span class="underlineBold">exact</span> match.
+                    <br><span class="orangeText bold">Orange:</span> The attribute has <span class="underlineBold">atleast one</span> matching property.
+                    <br><span class="redText bold">Red:</span> The attribute has <span class="underlineBold">no</span> matching properties.
+                    <br>Additionally, some attributes may display an ⬆️/⬇️ arrow, indicating if the answer is higher/lower than your guess.
+                    
+                </p>
+
+                <h1>Attributes</h1>
+
+                <h2>Enemy</h2>
+                <p>
+                    The image of the enemy you guessed.
+                </p>
+                <h2>Race</h2>
+                <p>
+                    The race of the combatant, ex: Cabal, Taken, Hive. 
+                    This can be useful if you guess a combatant with the same race as the answer, 
+                    but in specific scenarios can lead to a partial match. 
+                    <br>EX: <span class="blueText">Psion</span> (Cabal) will be a 
+                    <span class = "orangeText">partial</span> match with <span class="blueText">Taken Psion</span> (Cabal, Taken)
+                </p>
+                <h2>Damage Range</h2>
+                <p>
+                    The range of the combatants weapon(s), ex: Melee, Short, Medium, Long.
+                    This information is taken from <a href="https://www.destinypedia.com/">destinypedia</a>
+                    and represents the most common range(s) of the combatant.
+                </p>
+                <h2>Damage Burn</h2>
+                <p>
+                    The element type of the combatants weapon(s), ex: Solar, Arc, Void. Similar to damage range,
+                    this represents the most common element(s) of the combatant, and may include grenades.
+                </p>
+                <h2>Precision Spots</h2>
+                <p>
+                    The area on a combatant that classifies your shots as precision shots, ex: Head, Chest, Back, Shoulder.
+                    This represents each of different possible precision spots, EX: <span class="blueText">Tormentor</span> 
+                    will have precision spots of Shoulder and Chest. In some cases, there is a possiblity this is can be None.
+                </p>
+                <h2>Tier</h2>
+                <p>
+                    The tier of a combatant represents the general strength of the combatant. Lower tier enemies will be
+                    weaker, but come in large numbers. Higher tier enemies will be stronger, but more rare to encounter.
+                    EX: <span class="blueText">Thrall</span> would be tier 1, while <span class="blueText">Ogre</span>
+                    would be tier 4. This is different from combatant types (Minor, Major, Ultra).
+                    <br> <span class="italicize">*Note: Dread tiers are classified as what I believe they would be, since there is no information out yet.</span>
+                </p>
+                <h2>Origin</h2>
+                <p>
+                    The origin of a combatant is the game which the combatant was first introduced, 
+                    ex: <span class="blueText">Thrall</span> will be 1 (Destiny 1), while 
+                    <span class="blueText">Tormentor</span> would be 2 (Destiny 2)
+                </p>
+                <h1>Credits</h1>
+                <h2>Pokedle</h2>
+                <p>
+                    This website is heavily inspired by <a href="https://pokedle.net/">Pokedle</a>
+                </p>
+                <h2>Destinypedia & Destiny Data Compendium</h2>
+                <p>
+                    This is where I got a lot of information about enemies, and images for them. <a href="https://www.destinypedia.com/">Destinypedia</a> & <a href="https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/edit?gid=1038486120#gid=1038486120">Destiny Data Compendium</a>
+                </p>
+                <h2>Phosphor Icons</h2>
+                <p>
+                    All of the icons used here are sourced from <a href="https://phosphoricons.com/">Phosphor Icons</a>
+                </p>
+            </div>
+        </div>
+
+        <div id="statsOverlay" class="overlay">
+
+            <div class="overlay-content">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeStats()">x</a>
+
+                <h1>Stats</h1>
+                <h2>Current Game:</h2>
+                <p id="currentGame"></p>
+
+                <h2>Total Wins</h2>
+                <p id="totalWins">0</p>
+                <h2>Average Guesses To Win</h2>
+                <p id="averageGuesses">0</p>
+                <h2>Current Streak</h2>
+                <p id="streak">0</p>
+                <h2>Best Streak</h2>
+                <p id="bestStreak">0</p>
+
+            </div>
+        </div>
+
+        <div id="resetOverlay" class="overlay">
+
+            <div class="overlay-content">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeReset()">x</a>
+
+                <h1>Reset Data</h1>
+
+                <h2>Reset</h2>
+                <p>Permanently erase your saved data (streak, wins, current game, etc)</p>
+                <h3 id="resetDataButton" onclick="localStorage.clear(); window.location.reload()">PEMANENTLY erase my data</h3>
+            </div>
+        </div>
+
+        <img src="images/Destinydle.png" id="title">
+        
+        <div id="buttonsBarDiv">
+            <div id="buttonsBarBackground">
+                <img src="images/chart-bar.svg" class="buttons" onclick="openStats()">
+                <img src="images/info.svg" class="buttons" onclick="openNav()">
+                <img src="images/restore.svg" class="buttons" onclick="openReset()">
+            </div>
+        </div>
+
+        <h1 id="guessesHeading">
+            Daily #1
+        </h1>
+
+        <div id="inputDiv">
+            <input list="enemyList" type="text" id="enemyguess" name="enemyguess">
+            <input type="submit" id="enemyguesssubmit" name="enemyguesssubmit" value="ENTER">    
+        </div>
+        <datalist id="enemyList">
+        </datalist>
+
+
+        <table id="guessTable">
+            <tr>
+                <th>Enemy</th>
+                <th>Race</th>
+                <th>Damage Range(s)</th>
+                <th>Damage Burn(s)</th>
+                <th>Precision Spot(s)</th>
+                <th>Tier</th>
+                <th>Origin</th>
+            </tr>
+
+
+        </table>
+
+        <div class="footer">
+            <div class="left"></div>
+            <div class="disclaimer">
+                Destinydle is not affiliated with Bungie
+            </div>
+            <div class="footercontent">
+                By Premiumturtle22
+            </div>
+        </div>
+
+
+        <script src="script.js"></script>
+
+    </body>
+
+
+</html>

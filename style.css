@@ -1,0 +1,341 @@
+
+body{
+    background-color: rgb(61, 61, 168);
+    background-image: url('images/background2.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+th, td {
+    font-family: Inter;
+    font-size: 140%;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 75px;
+    min-height: 75px;
+}
+
+td{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+    border:3px solid black;
+    height: 75px;
+
+    text-align: center;
+    border-radius: 10px;
+    
+    
+}
+
+th {
+    padding: 10px;
+    font-weight: 800;
+    font-variant: small-caps;
+    color: white;
+    text-shadow: 0px 0px 15px black;
+    border-bottom: 2px solid white;
+
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+    width: 75%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    
+
+
+}
+
+
+#green {
+    background-color: green;
+}
+
+#orange {
+    background-color: orange;
+}
+
+#red {
+    background-color: red;
+}
+
+#up {
+    background-color: orange;
+}
+
+#down {
+    background-color: orange;
+}
+
+#resetDataButton {
+    color: red;
+}
+
+#resetDataButton:hover {
+    cursor: pointer;
+    color: salmon;
+}
+
+#currentGame {
+    font-size: 25px;
+}
+
+#enemyguess {
+    margin-right: 10px;
+
+    border: 3px solid;
+    border-radius: 20px;
+    width: 30%;
+    max-width: 300px;
+    height: 30px;
+
+    text-align: left;
+    padding-left: min(15px, 3%);
+
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#enemyguesssubmit {
+    position: absolute;
+    float: right;
+
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 500;
+    width: 75px;
+    max-width: 100px;
+    height: 35px;
+    border: 3px solid;
+    
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+
+#enemyguesssubmit:hover{
+    background-color: rgb(218, 212, 212);
+    height: 40px;
+    width: 80px;
+    font-size: 17px;
+    margin-bottom: -5px;
+    margin-left: -5px;
+}
+
+#inputDiv {
+    text-align: center;
+    
+}
+
+
+#guessesHeading{
+    margin-top: 0;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 800;
+    font-variant: small-caps;
+    font-size: 35px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+
+#title{
+    max-width: 75%;
+    max-height: 90px;
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#buttonsBarDiv {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 40%;
+    height: 45px;
+    max-width: 400px;
+}
+
+#buttonsBarBackground{
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    width: 35px;
+    height: 35px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.buttons:hover {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.overlay{
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 5%; /* 25% from the top */
+    width: 80%; /* 100% width */
+    max-width: 800px;
+    font-family: inter;
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(61, 61, 168);
+    border-radius: 20px;
+    margin: auto;
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    
+}
+
+
+.overlay-content p {
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 450;
+    line-height: 1.4;
+    
+}
+
+.overlay-content h1 {
+    font-size: 45px;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+.overlay-content h2 {
+    font-size: 30px;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: left;
+    color: rgb(61, 61, 168);
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    font-size: 60px;
+    text-decoration: none;
+}
+
+.overlay .closebtn:hover {
+    color: red;
+}
+
+.fade-in {
+    animation: fadeIn 0.2s linear;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.fade-out {
+    animation: fadeOut 0.2s linear;
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.greenText {
+    color: green;
+}
+
+.orangeText {
+    color: orange;
+}
+
+.redText {
+    color: red;
+}
+
+.blueText {
+    color: rgb(61, 61, 168)
+}
+
+.underlineBold {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.italicize {
+    font-style: italic;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.4);
+    display: flex;
+}
+
+.footer div{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.left {
+    flex: 1;
+    text-align: left;
+}
+
+.disclaimer {
+    color: white;
+    flex: 1;
+    text-align: center;
+}
+
+.footercontent {
+    color: white;
+    flex: 1;
+    text-align: right;
+    margin-right: 35px;
+    margin-left: -35px;
+}
+
+
